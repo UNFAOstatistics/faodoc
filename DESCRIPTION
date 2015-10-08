@@ -1,0 +1,13 @@
+Package: faodoc
+Type: Package
+Title: document templates for Rmarkdown for Food and Agriculture Oraganisation of United Nations
+Version: 0.1
+Date: 2015-10-08
+Author: Markus Kainu
+Maintainer: Markus Kainu <markus.kainu@fao.org>
+Description: More about what it does (maybe more than one line)
+License: GPL-3
+collate:
+      fao_basic.R
+Imports:
+    rmarkdown
