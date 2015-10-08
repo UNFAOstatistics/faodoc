@@ -52,7 +52,7 @@ devtools::install_github("UNFAOstatistics/faodoc")
 2) Install the **rmarkdown** and **faodoc** packages:
 
 ```S
-devtools::install_github(c("rstudio/rmarkdown", "rstudio/rticles"))
+devtools::install_github(c("rstudio/rmarkdown", "UNFAOstatistics/faodoc"))
 ```
     
 3) Use the `rmarkdown::draft` function to create articles:
