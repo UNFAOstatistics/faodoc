@@ -6,8 +6,8 @@ fao_basic <- function(keep_tex = TRUE,
                           package = "faodoc")
   base <- rmarkdown::pdf_document(template = template,
                                   keep_tex = keep_tex,
-                                  includes = includes,
-                                  highlight = "tango")#,
+                                  includes = includes)#,
+                                  #highlight = "tango")#,
                                   # pandoc_args = c("--latex-engine=xelatex"))
 
   # Mostly copied from knitr::render_sweave

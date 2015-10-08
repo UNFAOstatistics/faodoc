@@ -7,7 +7,5 @@ Author: Markus Kainu
 Maintainer: Markus Kainu <markus.kainu@fao.org>
 Description: More about what it does (maybe more than one line)
 License: GPL-3
-collate:
-      fao_basic.R
 Imports:
     rmarkdown

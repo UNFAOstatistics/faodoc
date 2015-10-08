@@ -35,8 +35,8 @@ affiliation:
     city: City X
     state: State XX # only USA, Australia, Canada
     country: Country X
-output: rticles::fao_basic
-csl: fao_basic.csl
+output: faodoc::fao_basic
+csl: frontiers.csl
 bibliography: test.BIB
 ---
 
