@@ -58,8 +58,6 @@ devtools::install_github(c("rstudio/rmarkdown", "UNFAOstatistics/faodoc"))
 3) Use the `rmarkdown::draft` function to create articles:
 
 ```S
-rmarkdown::draft("MyAbstract.Rmd", template = "use_r_abstract", package = "rticles")
-rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
-rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
+rmarkdown::draft("MyAbstract.Rmd", template = "fao_plain", package = "faodoc")
 ```
 
