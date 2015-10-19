@@ -2,7 +2,6 @@
 
 export(default_output_format)
 export(fao_plain)
-export(fao_slides)
 export(html_document)
 export(knitr_options)
 export(knitr_options_html)
