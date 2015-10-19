@@ -1,7 +1,7 @@
 Package: faodoc
 Type: Package
 Title: document templates for Rmarkdown for Food and Agriculture Oraganisation of United Nations
-Version: 0.1.0.2
+Version: 0.1.0.3
 Date: 2015-10-08
 Author: Markus Kainu
 Maintainer: Markus Kainu <markus.kainu@fao.org>
