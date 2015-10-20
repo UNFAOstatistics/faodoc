@@ -55,8 +55,100 @@
 #' }
 #'
 #' @export
+# fao_slides <- function(toc = FALSE,
+#                                 slide_level = NULL,
+#                                 incremental = FALSE,
+#                                 fig_width = 10,
+#                                 fig_height = 7,
+#                                 fig_crop = TRUE,
+#                                 fig_caption = FALSE,
+#                                 dev = 'pdf',
+#                                 theme = "default",
+#                                 colortheme = "default",
+#                                 fonttheme = "default",
+#                                 highlight = "default",
+#                                 template = "default",
+#                                 keep_tex = FALSE,
+#                                 latex_engine = "pdflatex",
+#                                 includes = NULL,
+#                                 md_extensions = NULL,
+#                                 pandoc_args = NULL) {
+#
+#   # base pandoc options for all beamer output
+#   args <- c()
+#
+#   # template path and assets
+#   if (!is.null(template) && !identical(template, "default"))
+#     args <- c(args, "--template", pandoc_path_arg(template))
+#
+#   # table of contents
+#   if (toc)
+#     args <- c(args, "--table-of-contents")
+#
+#   # slide level
+#   if (!is.null(slide_level))
+#     args <- c(args, "--slide-level", as.character(slide_level))
+#
+#   # incremental
+#   if (incremental)
+#     args <- c(args, "--incremental")
+#
+#   # themes
+#   if (!identical(theme, "default"))
+#     args <- c(args, pandoc_variable_arg("theme", theme))
+#   if (!identical(colortheme, "default"))
+#     args <- c(args, pandoc_variable_arg("colortheme", colortheme))
+#   if (!identical(fonttheme, "default"))
+#     args <- c(args, pandoc_variable_arg("fonttheme", fonttheme))
+#
+#   # highlighting
+#   if (!is.null(highlight))
+#     highlight <- match.arg(highlight, highlighters())
+#   args <- c(args, pandoc_highlight_args(highlight))
+#
+#   # latex engine
+#   latex_engine = match.arg(latex_engine, c("pdflatex", "lualatex", "xelatex"))
+#   args <- c(args, pandoc_latex_engine_args(latex_engine))
+#
+#   # content includes
+#   args <- c(args, includes_to_pandoc_args(includes))
+#
+#   # custom args
+#   args <- c(args, pandoc_args)
+#
+#   # return format
+#   output_format(
+#     knitr = knitr_options_pdf(fig_width, fig_height, fig_crop, dev),
+#     pandoc = pandoc_options(to = "beamer",
+#                             from = from_rmarkdown(fig_caption, md_extensions),
+#                             args = args,
+#                             keep_tex = keep_tex),
+#     clean_supporting = !keep_tex
+#   )
+# }
+# toc = FALSE
+# slide_level = NULL
+# incremental = FALSE
+# fig_width = 10
+# fig_height = 7
+# fig_crop = TRUE
+# fig_caption = FALSE
+# dev = 'pdf'
+# theme = "default"
+# colortheme = "default"
+# fonttheme = "default"
+# highlight = "default"
+# template = "template.tex"
+# keep_tex = FALSE
+# latex_engine = "pdflatex"
+# includes = NULL
+# md_extensions = NULL
+# pandoc_args = NULL
+
+
+
 fao_slides <- function(toc = FALSE,
-                                slide_level = NULL,
+                       slide_level = NULL,
                                 incremental = FALSE,
                                 fig_width = 10,
                                 fig_height = 7,
@@ -72,7 +164,28 @@ fao_slides <- function(toc = FALSE,
                                 latex_engine = "pdflatex",
                                 includes = NULL,
                                 md_extensions = NULL,
-                                pandoc_args = NULL) {
+                                pandoc_args = NULL
+                                ){
+
+  template <- system.file("rmarkdown", "templates", "fao_slides",
+                          "resources", "template.tex",
+                          package = "faodoc")
+  #
+  # base <- rmarkdown::pdf_document(template = template,
+  #                                 keep_tex = keep_tex,
+  #                                 includes = includes,
+  #                                 highlight = "tango",
+  #                                 pandoc_args = c("--latex-engine=pdflatex"))
+  #
+  #
+  # # Mostly copied from knitr::render_sweave
+  # base$knitr$opts_knit$out.format <- "sweave"
+  #
+  # base$knitr$opts_chunk$prompt <- TRUE
+  # base$knitr$opts_chunk$comment <- NA
+  # base$knitr$opts_chunk$highlight <- FALSE
+
+
 
   # base pandoc options for all beamer output
   args <- c()
@@ -94,7 +207,7 @@ fao_slides <- function(toc = FALSE,
     args <- c(args, "--incremental")
 
   # themes
-  if (!identical(theme, "default"))
+  # if (!identical(theme, "default"))
     args <- c(args, pandoc_variable_arg("theme", theme))
   if (!identical(colortheme, "default"))
     args <- c(args, pandoc_variable_arg("colortheme", colortheme))
@@ -102,19 +215,19 @@ fao_slides <- function(toc = FALSE,
     args <- c(args, pandoc_variable_arg("fonttheme", fonttheme))
 
   # highlighting
-  # if (!is.null(highlight))
-  #   highlight <- match.arg(highlight, highlighters())
-  # args <- c(args, pandoc_highlight_args(highlight))
+  if (!is.null(highlight))
+    highlight <- match.arg(highlight, highlighters())
+  args <- c(args, pandoc_highlight_args(highlight))
 
   # latex engine
-  # latex_engine = match.arg(latex_engine, c("pdflatex", "lualatex", "xelatex"))
-  # args <- c(args, pandoc_latex_engine_args(latex_engine))
+  latex_engine = match.arg(latex_engine, c("pdflatex", "lualatex", "xelatex"))
+  args <- c(args, pandoc_latex_engine_args(latex_engine))
 
   # content includes
-  # args <- c(args, includes_to_pandoc_args(includes))
+  args <- c(args, includes_to_pandoc_args(includes))
 
   # custom args
-  # args <- c(args, pandoc_args)
+  args <- c(args, pandoc_args)
 
   # return format
   output_format(
@@ -125,4 +238,25 @@ fao_slides <- function(toc = FALSE,
                             keep_tex = keep_tex),
     clean_supporting = !keep_tex
   )
+
+  #
+  # hook_chunk <- function(x, options) {
+  #   if (knitr:::output_asis(x, options)) return(x)
+  #   paste0('\\begin{CodeChunk}\n', x, '\\end{CodeChunk}')
+  # }
+  # hook_input <- function(x, options) {
+  #   paste0(c('\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
+  #          collapse = '\n')
+  # }
+  # hook_output <- function(x, options) {
+  #   paste0('\\begin{CodeOutput}\n', x, '\\end{CodeOutput}\n')
+  # }
+  #
+  # base$knitr$knit_hooks$chunk   <- hook_chunk
+  # base$knitr$knit_hooks$source  <- hook_input
+  # base$knitr$knit_hooks$output  <- hook_output
+  # base$knitr$knit_hooks$message <- hook_output
+  # base$knitr$knit_hooks$warning <- hook_output
+  # base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+  # base
 }

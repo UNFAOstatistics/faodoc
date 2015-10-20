@@ -1,6 +1,19 @@
 ---
-title: "Untitled"
-author: "You name here"
+title: "Main title of my presentation"
+subtitle: "Subtitle here"
+author:
+  - name: Author One
+    affiliation: Food and Agriculture Organisation of United Nations
+    address:
+    - line 1
+    - line 2
+    email:  author1@work
+  - name: Author Two
+    affiliation: Food and Agriculture Organisation of United Nations
+    address:
+    - line 1
+    - line 2
+    email:  author2@work
 date: "13 October 2015"
 output: faodoc::fao_slides
 ---

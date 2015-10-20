@@ -87,6 +87,7 @@ $if(graphics)$
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 
+
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
 \AtBeginPart{
@@ -142,14 +143,74 @@ $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$for(author)$$author.name$$sep$ \and $endfor$}
+% \email{$for(author)$$author.email$$sep$ \and $endfor$}
 $endif$
+
 \date{$date$}
 
+
+
+
+
+% ------------------------------------------------ %
+% Custom colors
+
+\definecolor{FAOBlue}{RGB}{80,135,206}
+\definecolor{Grey1}{RGB}{104, 104, 104}
+
+% ------------------------------------------------ %
+%                                                  %
+%               First page graphics                %
+%                                                  %
+% ------------------------------------------------ %
+
+\pgfdeclareimage[width=\paperwidth]{mybackground}{bg_1st_page.pdf}
+
+\setbeamertemplate{title page}{
+
+        \begin{picture}(0,0)
+
+            \put(-30,-163){%
+                \pgfuseimage{mybackground}
+            }
+
+            \put(0,-110.7){%
+                \begin{minipage}[b][45mm][t]{226mm}
+
+                  \bigskip
+                  \bigskip
+                  \huge{\inserttitle\par}
+                  \Large{\insertsubtitle\par}
+                  \bigskip
+                  \bigskip
+                  \large{\insertauthor\par}
+                  \normalsize{\insertinstitute\par}
+                  \small{\insertdate\par}
+
+
+                \end{minipage}
+            }
+
+            \end{picture}
+
+    }
+
+
+
+
+
 \begin{document}
-$if(title)$
-\frame{\titlepage}
-$endif$
+
+
+% $if(title)$
+% \frame{\titlepage}
+% $endif$
+
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
+
 
 $for(include-before)$
 $include-before$
