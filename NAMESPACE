@@ -2,6 +2,7 @@
 
 export(default_output_format)
 export(fao_plain)
+export(fao_slides)
 export(html_document)
 export(includes)
 export(includes_to_pandoc_args)

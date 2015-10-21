@@ -54,7 +54,7 @@
 #' render("pres.Rmd", beamer_presentation(incremental = TRUE))
 #' }
 #'
-#' @export
+
 # fao_slides <- function(toc = FALSE,
 #                                 slide_level = NULL,
 #                                 incremental = FALSE,
@@ -144,9 +144,7 @@
 # includes = NULL
 # md_extensions = NULL
 # pandoc_args = NULL
-
-
-
+#' @export
 fao_slides <- function(toc = FALSE,
                        slide_level = NULL,
                                 incremental = FALSE,
